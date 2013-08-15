@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WebTest" basedir="." default="root">
+	<property name="WebAppRoot" value="D:/tools/apache-tomcat-6.0.35/webapps/userLogin" />
+	<target name="Init">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+		<mkdir dir="${WebAppRoot}" />
+	</target>
+	<target name="Copy" depends="Init">
+		<copy flatten="false" todir="${WebAppRoot}" overwrite="true">
+			<fileset dir="WebContent">
+				<include name="WEB-INF/lib/*" />
+				<include name="WEB-INF/web.xml" />
+			</fileset> 
+		</copy>
+		<copy todir="${WebAppRoot}/WEB-INF" overwrite="true">
+			<fileset dir="build">
+				<include name="classes/**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${WebAppRoot}" overwrite="true" includeemptydirs="false">
+			<fileset dir="WebContent">
+				<exclude name="WEB-INF/**/*" />
+			 	<exclude name="META-INF/**/*" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="root" depends="Copy">
+	</target>
+</project>
